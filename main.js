@@ -30,7 +30,7 @@ function load_img(){
 function new_image()
 {
 	// write code to Upload ball image on canvas
-	fabric.Image.fromURL("ball.png",function(Img){
+	fabric.Image.fromURL("Arrow.png",function(Img){
 		b_o =Img;
 		b_o.scaleToWidth(50);
 		b_o.scaleToHeight(50);
