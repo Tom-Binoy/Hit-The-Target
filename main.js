@@ -69,10 +69,11 @@ function my_keydown(e)
 	And id coordinates matches them remove ball image, 
 	display "GAME OVER!!!" 
 	and make canvas border 'red'. */
-	if(b_x == h_x && b_y == h_y){
+        if(b_x == 870 && b_y == 180){
 		canvas.remove(b_o)
-		document.getElementById("myCanvas").style.borderColour= "green";
-		document.getElementById("myCanvas").style.backgroundURL="Goal.jpg";
+		canvas.remove(h_o)
+		row = '<img src="Goal.jpg onclick="re() width="'+screen.width'" height="'screen.height'">';
+		document.getElementById("myCanvas").innerHTML = row;
 	}
 	else{
 		if(keyPressed == '38')
