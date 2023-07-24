@@ -1,4 +1,3 @@
-
 // Create canvas variable
 canvas = new fabric.Canvas('myCanvas')
 //Set initial positions for ball and hole images.
@@ -43,8 +42,9 @@ function new_image()
 	
 }
 
-function new()
-{	canvas.remove(b_o);
+function new1()
+{
+		canvas.remove(b_o);
 	// write code to Upload ball image on canvas
 	fabric.Image.fromURL("Arrow.png",function(Img){
 		b_o =Img;
@@ -57,6 +57,18 @@ function new()
 		canvas.add(b_o);
 	});
 	
+	
+	
+}
+document.body.addEventListener("click",retry)
+function retry(){
+	   
+	document.body.style.backgroundImage = 'url("Grass.jpg")';
+	document.getElementById("all").style.visibility = "visible";
+	console.log(b_x,b_y,"re called")
+	new_image()
+	load_img()
+	canvas.backgroundColor = "forestgreen";
 }
 
 window.addEventListener("keydown", my_keydown);
@@ -69,11 +81,14 @@ function my_keydown(e)
 	And id coordinates matches them remove ball image, 
 	display "GAME OVER!!!" 
 	and make canvas border 'red'. */
-        if(b_x == 870 && b_y == 180){
-		canvas.remove(b_o)
-		canvas.remove(h_o)
-		row = '<img src="Goal.jpg onclick="re() width="'+screen.width'" height="'screen.height'">';
-		document.getElementById("myCanvas").innerHTML = row;
+   if((b_x > 870 && b_y > 140 ) && ( b_x < 950 && b_y < 220 )){
+		// The coordinates are valid, so remove the ball image and display the "GAME OVER!!!" message.
+		canvas.remove(b_o);
+		document.body.style.backgroundImage = 'url("Goal.jpg")';
+		document.getElementById("all").style.visibility = "hidden";
+
+		b_x = 100;
+		b_y = 225;
 	}
 	else{
 		if(keyPressed == '38')
@@ -104,7 +119,7 @@ function my_keydown(e)
 		if(b_y >0){
 		 b_y = b_y-block_image_height;
 		 console.log("Up arrow key is pressed, Y ="+b_y)
-		 new();
+		 new1();
 		 }
 	}
 
@@ -114,7 +129,7 @@ function my_keydown(e)
 		 if(b_y <=450){
 		 b_y+=block_image_height;
 		 console.log("Down arrow key is pressed, Y ="+b_y)
-		 new();
+		 new1();
 		 }
 	}
 
@@ -124,7 +139,7 @@ function my_keydown(e)
 		{
 		b_x-=block_image_height;
 		console.log("Left arrow key is pressed, X ="+b_x)
-		new();
+		new1();
 		}
 	}
 
@@ -134,9 +149,7 @@ function my_keydown(e)
 		console.log("r okay");
 		b_x+=block_image_height;
 		console.log("Right arrow key is pressed, X ="+b_x)
-		new();
+		new1();
 		}
 	}
 	
-
-
